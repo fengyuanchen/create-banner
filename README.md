@@ -50,8 +50,15 @@ createBanner();
  * Date: 2018-05-19T09:18:34.739Z
  */
 
-createBanner({ case: 'camelCase', lite: true });
-/*! createBanner v1.0.0 | (c) 2018 Chen Fengyuan | MIT */
+createBanner({ case: 'camelCase', template: 'simple' });
+/*!
+ * createBanner v1.0.0
+ * Copyright 2018 Chen Fengyuan
+ * Released under the MIT license
+ */
+
+createBanner({ case: 'Title Case', template: 'inline' });
+/*! Create Banner v1.0.0 | (c) 2018 Chen Fengyuan | MIT */
 ```
 
 ## Options
@@ -59,14 +66,15 @@ createBanner({ case: 'camelCase', lite: true });
 ### case
 
 - Type: `String`
-- Default: `'param-case'`
+- Default: `''`
 - Options:
   - `'param-case'`
   - `'camelCase'`
   - `'PascalCase'`
+  - `'Title Case'`
   - And other cases supported by the [change-case](https://www.npmjs.com/package/change-case) package.
 
-The case of the package name in the banner.
+The case of the package name in the banner. Not to change the package name case by default.
 
 ### data
 
@@ -82,6 +90,15 @@ The case of the package name in the banner.
 
 The extra data for creating banner, will be merged into package data.
 
+```js
+createBanner({
+  data: {
+    name: 'Library.js',
+    year: '2018-present',
+  },
+});
+```
+
 ### pkg
 
 - Type: `Object`
@@ -92,37 +109,51 @@ The package data for creating banner. If it is null, will read from the closest 
 ### template
 
 - Type: `String`
-- Default:
-
-  ```js
-  `
-  /*!
-   * @name v@version
-   * @homepage
-   *
-   * Copyright @year @author.name
-   * Released under the @license license
-   *
-   * Date: @date
-   */
-  `
-  ```
+- Default: `'normal'`
+- Options:
+  - `'normal'`:
+    ```js
+    /*!
+     * @name v@version
+     * @homepage
+     *
+     * Copyright @year @author.name
+     * Released under the @license license
+     *
+     * Date: @date
+     */
+    ```
+  - `'simple'`:
+    ```js
+    /*!
+     * @name v@version
+     * Copyright @year @author.name
+     * Released under the @license license
+     */
+    ```
+  - `'inline'`:
+    ```js
+    /*! @name v@version | (c) @year @author.name | @license */
+    ```
+  - Other values will be used directly as a custom template.
 
 The template for creating banner. Property using a dot path is supported by the [dot-prop](https://www.npmjs.com/package/dot-prop) package.
 
-### lite
+Example for custom template:
 
-- Type: `Boolean`
-- Default: `false`
-
-Indicate if create a lite banner or not.
-
-### liteTemplate
-
-- Type: `String`
-- Default: `'/*! @name v@version | (c) @year @author.name | @license */'`
-
-The template for creating lite banner.
+```js
+createBanner({
+  template: `/*!
+ * @name v@version
+ * @license (c) @author.name
+ */
+`,
+});
+/*!
+ * create-banner v1.0.0
+ * MIT (c) Chen Fengyuan
+ */
+```
 
 ## License
 

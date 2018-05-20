@@ -4,20 +4,48 @@ const createBanner = require('./');
 describe('create-banner', () => {
   describe('options', () => {
     describe('case', () => {
-      it('should be `param-case` be default', () => {
-        assert(createBanner().indexOf('create-banner') >= 0);
+      it('should not change the name case be default', () => {
+        assert(createBanner({
+          data: {
+            name: 'Library.js',
+          },
+        }).indexOf('Library.js') >= 0);
       });
 
-      it('should be `camelCase`', () => {
+      it('should be "param-case"', () => {
+        assert(createBanner({
+          case: 'param-case',
+          data: {
+            name: 'Library.js',
+          },
+        }).indexOf('library-js') >= 0);
+      });
+
+      it('should be "camelCase"', () => {
         assert(createBanner({
           case: 'camelCase',
-        }).indexOf('createBanner') >= 0);
+          data: {
+            name: 'Library.js',
+          },
+        }).indexOf('libraryJs') >= 0);
       });
 
-      it('should be `PascalCase`', () => {
+      it('should be "PascalCase"', () => {
         assert(createBanner({
           case: 'PascalCase',
-        }).indexOf('CreateBanner') >= 0);
+          data: {
+            name: 'Library.js',
+          },
+        }).indexOf('LibraryJs') >= 0);
+      });
+
+      it('should be "Title Case"', () => {
+        assert(createBanner({
+          case: 'Title Case',
+          data: {
+            name: 'Library.js',
+          },
+        }).indexOf('Library Js') >= 0);
       });
     });
 
@@ -67,18 +95,6 @@ describe('create-banner', () => {
       });
     });
 
-    describe('lite', () => {
-      it('should be `false` by default', () => {
-        assert(createBanner().indexOf('Date') >= 0);
-      });
-
-      it('should create a lite banner', () => {
-        assert(createBanner({
-          lite: true,
-        }).indexOf('Date') < 0);
-      });
-    });
-
     describe('pkg', () => {
       it('should be `null` and use the data of current package by default', () => {
         assert(createBanner().indexOf('create-banner') >= 0);
@@ -94,23 +110,28 @@ describe('create-banner', () => {
     });
 
     describe('template', () => {
-      it('should create a banner base on the given template', () => {
+      it('should be "normal" by default', () => {
+        assert(createBanner().indexOf('Date') >= 0);
+      });
+
+      it('should be "simple"', () => {
+        assert(createBanner({
+          template: 'simple',
+        }).indexOf('Date') < 0);
+      });
+
+      it('should be "inline"', () => {
+        assert(createBanner({
+          template: 'inline',
+        }).indexOf('(c)') >= 0);
+      });
+
+      it('should create a banner bases on the given template', () => {
         const template = '/*! foo */';
 
         assert.equal(createBanner({
           template,
         }), template);
-      });
-    });
-
-    describe('liteTemplate', () => {
-      it('should create a lite banner base on the given template', () => {
-        const liteTemplate = '/*! foo */';
-
-        assert.equal(createBanner({
-          liteTemplate,
-          lite: true,
-        }), liteTemplate);
       });
     });
   });

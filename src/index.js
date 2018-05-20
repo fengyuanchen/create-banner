@@ -4,14 +4,8 @@ import extend from 'extend';
 import readPkgUp from 'read-pkg-up';
 
 const now = new Date();
-const DEFAULTS = {
-  case: 'param-case',
-  data: {
-    date: now.toISOString(),
-    year: now.getFullYear(),
-  },
-  pkg: null,
-  template: `/*!
+const TEMPLATES = {
+  normal: `/*!
  * @name v@version
  * @homepage
  *
@@ -21,8 +15,22 @@ const DEFAULTS = {
  * Date: @date
  */
 `,
-  lite: false,
-  liteTemplate: '/*! @name v@version | (c) @year @author.name | @license */',
+  simple: `/*!
+ * @name v@version
+ * Copyright @year @author.name
+ * Released under the @license license
+ */
+`,
+  inline: '/*! @name v@version | (c) @year @author.name | @license */',
+};
+const DEFAULTS = {
+  case: '',
+  data: {
+    date: now.toISOString(),
+    year: now.getFullYear(),
+  },
+  pkg: null,
+  template: 'normal',
 };
 const REGEXP_SCOPE = /^.+\//;
 const REGEXP_PLACEHOLDER = /@(\w+(?:\.\w+)*)/gi;
@@ -44,7 +52,7 @@ export default function createBanner(options) {
     data.name = convertCase(data.name);
   }
 
-  const template = opts.lite ? opts.liteTemplate : opts.template;
+  const template = TEMPLATES[opts.template] || String(opts.template);
 
   return template.replace(
     REGEXP_PLACEHOLDER,
