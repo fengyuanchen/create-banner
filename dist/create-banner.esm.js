@@ -1,11 +1,11 @@
 /*!
- * createBanner v0.1.0
+ * createBanner v1.0.0
  * https://github.com/fengyuanchen/create-banner
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-05-19T09:57:28.560Z
+ * Date: 2018-05-20T06:11:34.311Z
  */
 
 import changeCase from 'change-case';
@@ -16,16 +16,19 @@ import readPkgUp from 'read-pkg-up';
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var now = new Date();
+var TEMPLATES = {
+  normal: '/*!\n * @name v@version\n * @homepage\n *\n * Copyright @year @author.name\n * Released under the @license license\n *\n * Date: @date\n */\n',
+  simple: '/*!\n * @name v@version\n * Copyright @year @author.name\n * Released under the @license license\n */\n',
+  inline: '/*! @name v@version | (c) @year @author.name | @license */'
+};
 var DEFAULTS = {
-  case: 'param-case',
+  case: '',
   data: {
     date: now.toISOString(),
     year: now.getFullYear()
   },
   pkg: null,
-  template: '/*!\n * @name v@version\n * @homepage\n *\n * Copyright @year @author.name\n * Released under the @license license\n *\n * Date: @date\n */\n',
-  lite: false,
-  liteTemplate: '/*! @name v@version | (c) @year @author.name | @license */'
+  template: 'normal'
 };
 var REGEXP_SCOPE = /^.+\//;
 var REGEXP_PLACEHOLDER = /@(\w+(?:\.\w+)*)/gi;
@@ -50,7 +53,7 @@ function createBanner(options) {
     data.name = convertCase(data.name);
   }
 
-  var template = opts.lite ? opts.liteTemplate : opts.template;
+  var template = TEMPLATES[opts.template] || String(opts.template);
 
   return template.replace(REGEXP_PLACEHOLDER, function (placeholder, property) {
     return dotProp.get(data, property);

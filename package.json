@@ -1,6 +1,6 @@
 {
   "name": "create-banner",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Create a banner from a package.json file.",
   "main": "dist/create-banner.common.js",
   "module": "dist/create-banner.esm.js",
