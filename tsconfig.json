@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "strict": true
+  },
+  "include": [
+    "index.ts"
+  ]
+}

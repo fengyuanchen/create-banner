@@ -1,5 +1,5 @@
 const assert = require('assert');
-const createBanner = require('./');
+const createBanner = require('.');
 
 describe('create-banner', () => {
   describe('options', () => {
@@ -45,7 +45,7 @@ describe('create-banner', () => {
           data: {
             name: 'Library.js',
           },
-        }).indexOf('Library Js') >= 0);
+        }).indexOf('Library.js') >= 0);
       });
     });
 

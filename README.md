@@ -8,8 +8,8 @@
 
 ```text
 dist/
-├── create-banner.common.js (CommonJS, default)
-└── create-banner.esm.js    (ES Module)
+├── create-banner.js     (CommonJS, default)
+└── create-banner.esm.js (ECMAScript Module)
 ```
 
 ## Install
@@ -26,11 +26,11 @@ npm install create-banner
 createBanner(options);
 ```
 
-- **options**
-  - Type: `Object`
-  - The [options](#options) for creating banner.
-
-- (return value)
+- **Arguments**:
+  - `options` (optional):
+    - Type: `Object`
+    - The [options](#options) for creating banner.
+- **Returns**:
   - Type: `String`
   - Return the created banner.
 
@@ -68,11 +68,18 @@ createBanner({ case: 'Title Case', template: 'inline' });
 - Type: `String`
 - Default: `''`
 - Options:
-  - `'param-case'`
-  - `'camelCase'`
-  - `'PascalCase'`
-  - `'Title Case'`
-  - And other cases supported by the [change-case](https://www.npmjs.com/package/change-case) package.
+  - `'camel-case'` (camelCase)
+  - `'capital-case'` (Capital Case)
+  - `'constant-case'` (CONSTANT_CASE)
+  - `'dot-case'` (dot.case)
+  - `'header-case'` (Header-Case)
+  - `'no-case'` (no-case)
+  - `'param-case'` (param-case)
+  - `'pascal-case'` (PascalCase)
+  - `'path-case'` (path/case)
+  - `'sentence-case'` (Sentence case)
+  - `'snake-case'` (snake_case)
+  - All the case functions supported by the [change-case](https://www.npmjs.com/package/change-case) package.
 
 The case of the package name in the banner. Not to change the package name case by default.
 
@@ -102,9 +109,9 @@ createBanner({
 ### pkg
 
 - Type: `Object`
-- Default: `null`
+- Default: `undefined`
 
-The package data for creating banner. If it is null, will read from the closest `package.json` file by default using the [read-pkg-up](https://www.npmjs.com/package/read-pkg-up) package.
+The package data for creating banner. If it is undefined, will read from the closest `package.json` file by default using the [read-pkg-up](https://www.npmjs.com/package/read-pkg-up) package.
 
 ### template
 
@@ -112,6 +119,7 @@ The package data for creating banner. If it is null, will read from the closest 
 - Default: `'normal'`
 - Options:
   - `'normal'`:
+
     ```js
     /*!
      * @name v@version
@@ -123,7 +131,9 @@ The package data for creating banner. If it is null, will read from the closest 
      * Date: @date
      */
     ```
+
   - `'simple'`:
+
     ```js
     /*!
      * @name v@version
@@ -131,10 +141,13 @@ The package data for creating banner. If it is null, will read from the closest 
      * Released under the @license license
      */
     ```
+
   - `'inline'`:
+
     ```js
     /*! @name v@version | (c) @year @author.name | @license */
     ```
+
   - Other values will be used directly as a custom template.
 
 The template for creating banner. Property using a dot path is supported by the [dot-prop](https://www.npmjs.com/package/dot-prop) package.
@@ -155,6 +168,10 @@ createBanner({
  */
 ```
 
+## Versioning
+
+Maintained under the [Semantic Versioning guidelines](https://semver.org/).
+
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Chen Fengyuan](http://chenfengyuan.com)
+[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com/)

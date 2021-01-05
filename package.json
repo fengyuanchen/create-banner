@@ -1,54 +1,52 @@
 {
   "name": "create-banner",
-  "version": "1.0.0",
   "description": "Create a banner from a package.json file.",
-  "main": "dist/create-banner.common.js",
-  "module": "dist/create-banner.esm.js",
-  "repository": "fengyuanchen/create-banner",
-  "homepage": "https://github.com/fengyuanchen/create-banner",
-  "license": "MIT",
-  "author": {
-    "name": "Chen Fengyuan",
-    "url": "http://chenfengyuan.com"
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "build:dts": "tsc --target es6 --declaration --emitDeclarationOnly",
+    "clean": "del-cli index.js index.esm.js index.d.ts",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "eslint . --ext .js,.ts --fix",
+    "release": "npm run clean && npm run lint && npm run build && npm run build:dts && npm test",
+    "test": "nyc mocha"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fengyuanchen/create-banner.git"
+  },
   "keywords": [
     "create",
     "banner",
-    "comment",
-    "generate",
-    "generator",
+    "banner-generator",
     "package",
     "package.json"
   ],
-  "scripts": {
-    "build": "rollup -c",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "lint": "eslint src *.js --fix",
-    "release": "npm run lint && npm run build && npm run test",
-    "start": "rollup -c -w",
-    "test": "nyc mocha"
-  },
+  "author": "Chen Fengyuan (https://chenfengyuan.com/)",
+  "license": "MIT",
+  "bugs": "https://github.com/fengyuanchen/create-banner/issues",
+  "homepage": "https://github.com/fengyuanchen/create-banner/#readme",
   "dependencies": {
-    "change-case": "^3.0.2",
-    "dot-prop": "^4.2.0",
-    "extend": "^3.0.1",
-    "read-pkg-up": "^3.0.0"
+    "change-case": "^4.1.2",
+    "deepmerge": "^4.2.2",
+    "dot-prop": "^6.0.1",
+    "read-pkg-up": "^7.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "codecov": "^3.0.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "mocha": "^5.2.0",
-    "nyc": "^11.8.0",
-    "rollup": "^0.59.1",
-    "rollup-plugin-babel": "^3.0.4",
-    "rollup-watch": "^4.3.1"
+    "@rollup/plugin-typescript": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "codecov": "^3.8.1",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "rollup": "^2.36.1",
+    "typescript": "^4.1.3"
   }
 }

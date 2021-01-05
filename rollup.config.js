@@ -1,34 +1,21 @@
-const babel = require('rollup-plugin-babel');
-const createBanner = require('./');
-
-const banner = createBanner({
-  case: 'camelCase',
-  data: {
-    year: '2018-present',
-  },
-});
+import typescript from '@rollup/plugin-typescript';
+import pkg from './package.json';
 
 export default {
-  input: 'src/index.js',
+  input: 'index.ts',
   output: [
     {
-      banner,
-      file: 'dist/create-banner.common.js',
       format: 'cjs',
+      file: pkg.main,
+      exports: 'auto',
     },
     {
-      banner,
-      file: 'dist/create-banner.esm.js',
       format: 'esm',
+      file: pkg.module,
     },
   ],
-  external: [
-    'change-case',
-    'dot-prop',
-    'extend',
-    'read-pkg-up',
-  ],
+  external: Object.keys(pkg.dependencies),
   plugins: [
-    babel(),
+    typescript(),
   ],
 };
