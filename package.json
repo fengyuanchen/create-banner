@@ -1,13 +1,18 @@
 {
   "name": "create-banner",
   "description": "Create a banner from a package.json file.",
-  "version": "1.0.0",
+  "version": "2.0.0-alpha",
   "main": "index.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.esm.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "build": "rollup -c",
-    "build:dts": "tsc --target es6 --declaration --emitDeclarationOnly",
+    "build:dts": "tsc --declaration --emitDeclarationOnly",
     "clean": "del-cli index.js index.esm.js index.d.ts",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint . --ext .js,.ts --fix",
@@ -48,5 +53,8 @@
     "nyc": "^15.1.0",
     "rollup": "^2.36.1",
     "typescript": "^4.1.3"
+  },
+  "publishConfig": {
+    "tag": "next"
   }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0-alpha (Jan 7, 2021)
+
+- Refactor in TypeScript.
+- Improve the available options.
+- Add a TypeScript Declaration File.
+- Upgrade the builtin dependencies.
+
 ## 1.0.0 (May 20, 2018)
 
 - Change the default value of the `case` option from `'param-case'` to `''`.

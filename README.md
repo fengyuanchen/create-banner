@@ -4,12 +4,13 @@
 
 > Create a banner from a package.json file.
 
-## Main
+## Main files
 
 ```text
 dist/
-├── create-banner.js     (CommonJS, default)
-└── create-banner.esm.js (ECMAScript Module)
+├── index.js         (CommonJS, default)
+├── index.esm.js     (ECMAScript Module)
+└── index.d.ts       (TypeScript Declaration File)
 ```
 
 ## Install
