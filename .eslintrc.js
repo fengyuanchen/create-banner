@@ -2,7 +2,10 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: 'airbnb-typescript/base',
+  extends: [
+    'airbnb-typescript/base',
+    'plugin:@typescript-eslint/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
@@ -11,6 +14,9 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
   ],
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
   overrides: [
     {
       files: 'test.js',
