@@ -47,7 +47,7 @@ const DEFAULTS: CreateBannerOptions = {
 const REGEXP_SCOPE = /^.+\//;
 const REGEXP_PLACEHOLDER = /@(\w+(?:\.\w+)*)/gi;
 
-function createBanner(options?: CreateBannerOptions) {
+function createBanner(options?: CreateBannerOptions): string {
   const opts: CreateBannerOptions = deepMerge(DEFAULTS, options || {});
   let { pkg } = opts;
 
