@@ -1,7 +1,7 @@
 {
   "name": "create-banner",
   "description": "Create a banner from a package.json file.",
-  "version": "2.0.0-alpha",
+  "version": "2.0.0-beta",
   "main": "index.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
@@ -42,19 +42,16 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.12.0",
-    "@typescript-eslint/parser": "^4.12.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
     "codecov": "^3.8.1",
     "del-cli": "^3.0.1",
-    "eslint": "^7.17.0",
+    "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
-    "rollup": "^2.36.1",
+    "rollup": "^2.36.2",
     "typescript": "^4.1.3"
-  },
-  "publishConfig": {
-    "tag": "next"
   }
 }

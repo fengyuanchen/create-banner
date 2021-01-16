@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-beta (Jan 16, 2021)
+
+- Update TypeScript Declaration File.
+
 ## 2.0.0-alpha (Jan 7, 2021)
 
 - Refactor in TypeScript.

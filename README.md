@@ -1,13 +1,13 @@
 # create-banner
 
-[![Build Status](https://img.shields.io/travis/fengyuanchen/create-banner.svg)](https://travis-ci.org/fengyuanchen/create-banner) [![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/create-banner.svg)](https://codecov.io/gh/fengyuanchen/create-banner) [![Downloads](https://img.shields.io/npm/dm/create-banner.svg)](https://www.npmjs.com/package/create-banner) [![Version](https://img.shields.io/npm/v/create-banner.svg)](https://www.npmjs.com/package/create-banner)
+[![Build Status](https://img.shields.io/github/workflow/status/fengyuanchen/create-banner/ci/main.svg)](https://github.com/fengyuanchen/create-banner/actions) [![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/create-banner.svg)](https://codecov.io/gh/fengyuanchen/create-banner) [![Downloads](https://img.shields.io/npm/dm/create-banner.svg)](https://www.npmjs.com/package/create-banner) [![Version](https://img.shields.io/npm/v/create-banner.svg)](https://www.npmjs.com/package/create-banner)
 
 > Create a banner from a package.json file.
 
 ## Main files
 
 ```text
-dist/
+/
 ├── index.js         (CommonJS, default)
 ├── index.esm.js     (ECMAScript Module)
 └── index.d.ts       (TypeScript Declaration File)
@@ -16,7 +16,7 @@ dist/
 ## Install
 
 ```shell
-npm install create-banner
+npm install --save-dev create-banner
 ```
 
 ## Usage
