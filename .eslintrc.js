@@ -23,6 +23,9 @@ module.exports = {
       env: {
         mocha: true,
       },
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
   ],
 };
