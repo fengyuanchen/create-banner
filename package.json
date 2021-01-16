@@ -14,10 +14,10 @@
     "build": "rollup -c",
     "build:dts": "tsc --declaration --emitDeclarationOnly",
     "clean": "del-cli index.js index.esm.js index.d.ts",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint . --ext .js,.ts --fix",
     "release": "npm run clean && npm run lint && npm run build && npm run build:dts && npm test",
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "test:coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
