@@ -32,7 +32,7 @@ createBanner(options);
     - Type: `Object`
     - The [options](#options) for creating banner.
 - **Returns**:
-  - Type: `String`
+  - Type: `string`
   - Return the created banner.
 
 ### Examples

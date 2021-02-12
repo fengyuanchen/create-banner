@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 (Feb 12, 2021)
+
+- Release as a stable version.
+
 ## 2.0.0-beta (Jan 16, 2021)
 
 - Update TypeScript Declaration File.
